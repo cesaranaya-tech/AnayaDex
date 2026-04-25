@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokémon Web</title>
+  <style>
+    body { font-family: Arial; background-color: #f0f8ff; text-align: center; }
+    .pokemon-card { border: 2px solid #333; padding: 10px; margin: 10px; display: inline-block; width: 200px; background-color: #fff; }
+    img { width: 120px; }
+    .quiz { margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h1>Bienvenido al Mundo Pokémon</h1>
+  <p>Conoce las características de tus personajes favoritos.</p>
+
+  <!-- Tarjetas de Pokémon -->
+  <div class="pokemon-card">
+    <h2>Pikachu</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu">
+    <p>Tipo: Eléctrico</p>
+    <p>Habilidad: Electricidad estática</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Charmander</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander">
+    <p>Tipo: Fuego</p>
+    <p>Habilidad: Mar de llamas</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Bulbasaur</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur">
+    <p>Tipo: Planta/Veneno</p>
+    <p>Habilidad: Espesura</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Squirtle</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle">
+    <p>Tipo: Agua</p>
+    <p>Habilidad: Torrente</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Jigglypuff</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png" alt="Jigglypuff">
+    <p>Tipo: Normal/Hada</p>
+    <p>Habilidad: Cacheo</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Meowth</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png" alt="Meowth">
+    <p>Tipo: Normal</p>
+    <p>Habilidad: Recogida</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Snorlax</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png" alt="Snorlax">
+    <p>Tipo: Normal</p>
+    <p>Habilidad: Inmunidad</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Gengar</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="Gengar">
+    <p>Tipo: Fantasma/Veneno</p>
+    <p>Habilidad: Levitación</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Eevee</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="Eevee">
+    <p>Tipo: Normal</p>
+    <p>Habilidad: Fuga</p>
+  </div>
+
+  <div class="pokemon-card">
+    <h2>Mewtwo</h2>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="Mewtwo">
+    <p>Tipo: Psíquico</p>
+    <p>Habilidad: Presión</p>
+  </div>
+
+  <!-- Quiz -->
+  <div class="quiz">
+    <h2>¿Qué tipo de Pokémon eres?</h2>
+    <form>
+      <label>¿Prefieres el día o la noche?</label><br>
+      <input type="radio" name="q1" value="fuego"> Día<br>
+      <input type="radio" name="q1" value="agua"> Noche<br><br>
+
+      <label>¿Qué ambiente disfrutas más?</label><br>
+      <input type="radio" name="q2" value="planta"> Bosque<br>
+      <input type="radio" name="q2" value="eléctrico"> Ciudad<br><br>
+
+      <button type="button" onclick="evaluar()">Descubre tu tipo</button>
+    </form>
+    <p id="resultado"></p>
+    <img id="pokemonImagen" style="display:none; margin-top:20px;" />
+  </div>
+
+  <script>
+    function evaluar() {
+      let respuestas = document.querySelectorAll('input:checked');
+      if (respuestas.length < 2) {
+        document.getElementById('resultado').innerText = "Responde todas las preguntas.";
+        document.getElementById('pokemonImagen').style.display = "none";
+        return;
+      }
+
+      let tipo = respuestas[0].value;
+      let resultadoTexto = "¡Tu tipo Pokémon es: " + tipo + "!";
+      document.getElementById('resultado').innerText = resultadoTexto;
+
+      // Mostrar imagen según el tipo
+      let imagen = document.getElementById('pokemonImagen');
+      if (tipo === "fuego") {
+        imagen.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"; // Charmander
+      } else if (tipo === "agua") {
+        imagen.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"; // Squirtle
+      } else if (tipo === "planta") {
+        imagen.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"; // Bulbasaur
+      } else if (tipo === "eléctrico") {
+        imagen.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"; // Pikachu
+      }
+      imagen.style.display = "block";
+    }
+  </script>
+</body>
+</html>
